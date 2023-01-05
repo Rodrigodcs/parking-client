@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.button-red-off{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: darkred;
+}
+.button-red-on{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: red;
+}
+.button-green-off{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(6, 110, 6);
+}
+.button-green-on{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(3, 197, 3);
+}
+
+.container-leds{
+  display:flex;
+  gap:50px;
+  justify-content: center;
+  padding:50px;
+}
