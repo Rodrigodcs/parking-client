@@ -9,29 +9,10 @@ import { HiRefresh } from 'react-icons/hi';
 export default function ParkingLot() {
   const [loading,setLoading] = useState(true)
   const [maxOccupancy,setMaxOccupancy] = useState(39)
-  const [clients,setClients] = useState(
-    [
-      {
-        car:"gol",
-        color:"#2F2CC6",
-        licensePlate:"BAA0432"
-      },
-      {
-        car:"fusca",
-        color:"#ED1C1C",
-        licensePlate:"BAC3241"
-      },
-      {
-        car:"onix",
-        color:"#39CF6D",
-        licensePlate:"ACA1257"
-      }
-    ]
-    
-  )
+  const [clients,setClients] = useState(null)
   
-  //REACT_APP_API_URL=http://localhost:5000
   useEffect(()=>{
+    //setInterval(()=>refresh(),15000)
     axios.get(`${process.env.REACT_APP_API_URL}/traffic/parked`).then((response)=>{
       const {clients, maxOccupancy} = response.data
       setClients(clients)
@@ -77,11 +58,17 @@ export default function ParkingLot() {
     <>
       <Container>
         <RefreshButton onClick={refresh}><HiRefresh className="refresh"/></RefreshButton>
-        {createParkingLot().map((spot,index)=> {
-          return spot.occupied?
-          <Spot key={index}><p className="index">{index+1}</p><Car car={spot.car} color={spot.color} licensePlate={spot.licensePlate}/></Spot>:
-          <Spot key={index}><p className="index">{index+1}</p></Spot>
-        })}
+        {loading?
+          <ContainerLoading>
+            <ReactLoading type="spinningBubbles" color="#F4D525" height={200} width={200} />
+          </ContainerLoading>:
+          createParkingLot().map((spot,index)=> {
+            return spot.occupied?
+              <Spot key={index}><p className="index">{index+1}</p><Car car={spot.car} color={spot.color} licensePlate={spot.licensePlate}/></Spot>:
+              <Spot key={index}><p className="index">{index+1}</p></Spot>
+          })
+        }
+        
       </Container>
     </>
         
