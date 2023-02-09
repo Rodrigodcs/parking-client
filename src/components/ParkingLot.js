@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactLoading from 'react-loading';
+import Button from '@mui/material/Button';
+
 
 import Car from "./Car"
 import axios from "axios";
@@ -57,6 +59,7 @@ export default function ParkingLot() {
   return (
     <>
       <Container>
+        <Button variant="contained" className="test"><HiRefresh className="refresh"/></Button>
         <RefreshButton onClick={refresh}><HiRefresh className="refresh"/></RefreshButton>
         {loading?
           <ContainerLoading>
@@ -89,6 +92,23 @@ const Container = styled.div`
     
     gap:15px;
     position:relative;
+    .test{
+      background-color: #F4D525;
+      border-radius: 50%;
+      position:fixed;
+    top:15px;
+    right:30px;
+    z-index: 3;
+    width:70px;
+    height: 70px;
+    color: black;
+    :hover{
+      background-color: #F0F703;
+    }
+      .refresh{
+        font-size: 50px;
+      }
+    }
 `;
 
 const ContainerLoading = styled.div`
@@ -101,8 +121,9 @@ const ContainerLoading = styled.div`
 `;
 
 const RefreshButton = styled.button`
-    position:absolute;
-    top:-115px;
+  display:none;
+    position:fixed;
+    top:15px;
     right:30px;
     z-index: 3;
     width:70px;
