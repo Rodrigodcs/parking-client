@@ -84,8 +84,9 @@ const Container = styled.div`
     display:flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     align-content: flex-start;
-    padding-top: 90px;
+    
     gap:15px;
     position:relative;
 `;
@@ -101,9 +102,9 @@ const ContainerLoading = styled.div`
 
 const RefreshButton = styled.button`
     position:absolute;
-    top:0px;
-    left:30px;
-    z-index: 1;
+    top:-115px;
+    right:30px;
+    z-index: 3;
     width:70px;
     height: 70px;
     border-radius: 50%;

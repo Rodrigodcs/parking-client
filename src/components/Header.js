@@ -22,7 +22,7 @@ const HeaderSection = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 2;
 
     h1 {
         font-size: 50px;
